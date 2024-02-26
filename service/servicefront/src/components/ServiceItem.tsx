@@ -1,5 +1,5 @@
-import { useTasks } from "../context/useTasks";
-import { Task } from "../interface/task.interface";
+import { useTasks } from "../context/useService";
+import { Task } from "../interface/service.interface";
 import { IoCheckmarkDone, IoTrash } from "react-icons/io5";
 
 interface Props {

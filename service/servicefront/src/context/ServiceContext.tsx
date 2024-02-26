@@ -1,11 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { CreateTask, Task, UpdateTask } from "../interface/task.interface";
+import { CreateTask, Task, UpdateTask } from "../interface/service.interface";
 import {
   createTaskRequest,
   deleteTaskRequest,
   getTasksRequest,
   updateTaskRequest,
-} from "../api/tasks";
+} from "../api/service";
 
 interface TaskContextValue {
   tasks: Task[];

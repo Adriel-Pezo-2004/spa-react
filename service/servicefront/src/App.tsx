@@ -1,6 +1,6 @@
-import TaskForm from "./components/TaskForm";
-import TasksList from "./components/TasksList";
-import { TaskProvider } from "./context/TaskContext";
+import TaskForm from "./components/ServiceForm";
+import TasksList from "./components/ServiceList";
+import { TaskProvider } from "./context/ServiceContext";
 
 function App() {
   return (

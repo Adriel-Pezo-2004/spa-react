@@ -1,5 +1,5 @@
-import TaskItem from "./TaskItem";
-import { useTasks } from "../context/useTasks";
+import TaskItem from "./ServiceItem";
+import { useTasks } from "../context/useService";
 
 function TasksList() {
   const { tasks } = useTasks();

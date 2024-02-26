@@ -1,4 +1,4 @@
-import { CreateTask, UpdateTask } from "../interface/task.interface";
+import { CreateTask, UpdateTask } from "../interface/service.interface";
 
 const API = "http://localhost:3000/api";
 
