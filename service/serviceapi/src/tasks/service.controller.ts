@@ -10,9 +10,9 @@ import {
   HttpCode,
   Put,
 } from '@nestjs/common';
-import { TasksService } from './tasks.service';
-import { CreateTaskDto } from 'src/dto/create-task.dto';
-import { UpdateTaskDto } from 'src/dto/update-task.dto';
+import { TasksService } from './service.service';
+import { CreateTaskDto } from 'src/dto/create-service.dto';
+import { UpdateTaskDto } from 'src/dto/update-service.dto';
 
 @Controller('tasks')
 export class TasksController {
