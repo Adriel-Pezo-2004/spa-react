@@ -11,7 +11,7 @@ import { IssueModule } from './issueapi/tasks/issue.module';
     ServiceModule,
     DateModule,
     IssueModule,
-    MongooseModule.forRoot('mongodb+srv://kodestudioperu:camila123@cluster0.xgabadc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'),
+    MongooseModule.forRoot('mongodb+srv://adriel:afpv2024@spa.2tizqrv.mongodb.net/'),
   ],
   controllers: [],
   providers: [],
