@@ -10,13 +10,13 @@ import {
   HttpCode,
   Put,
 } from '@nestjs/common';
-import { TasksService } from './service.service';
-import { CreateTaskDto } from 'src/dto/create-service.dto';
-import { UpdateTaskDto } from 'src/dto/update-service.dto';
+import { ServiceService } from './service.service';
+import { CreateServiceDto } from '../dto/create-service.dto';
+import { UpdateServiceDto } from '../dto/update-service.dto';
 
-@Controller('tasks')
-export class TasksController {
-  constructor(private tasksService: TasksService) {}
+@Controller('service')
+export class ServiceController {
+  constructor(private tasksService: ServiceService) {}
 
   @Get()
   async findAll() {
@@ -24,7 +24,7 @@ export class TasksController {
   }
 
   @Post()
-  async create(@Body() body: CreateTaskDto) {
+  async create(@Body() body: CreateServiceDto) {
     try {
       return await this.tasksService.create(body);
     } catch (error) {
@@ -35,24 +35,24 @@ export class TasksController {
     }
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    const task = await this.tasksService.findOne(id);
+  @Get(':code')
+  async findOne(@Param('code') code: string) {
+    const task = await this.tasksService.findOne(code);
     if (!task) throw new NotFoundException('Task does not exist!');
     return task;
   }
 
-  @Delete(':id')
+  @Delete(':code')
   @HttpCode(204)
-  async delete(@Param('id') id: string) {
-    const task = await this.tasksService.delete(id);
+  async delete(@Param('code') code: string) {
+    const task = await this.tasksService.delete(code);
     if (!task) throw new NotFoundException('Task does not exist!');
     return task;
   }
 
-  @Put(':id')
-  async update(@Param('id') id: string, @Body() body: UpdateTaskDto) {
-    const task = await this.tasksService.update(id, body);
+  @Put(':code')
+  async update(@Param('code') code: string, @Body() body: UpdateServiceDto) {
+    const task = await this.tasksService.update(code, body);
     if (!task) throw new NotFoundException('Task does not exist!');
     return task;
   }

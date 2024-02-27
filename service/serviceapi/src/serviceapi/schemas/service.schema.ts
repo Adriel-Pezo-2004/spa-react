@@ -1,20 +1,23 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
-export type TaskDocument = HydratedDocument<Task>;
+export type ServiceDocument = HydratedDocument<Service>;
 
 @Schema({
   timestamps: true,
 })
-export class Task {
+export class Service {
   @Prop({ unique: true, trim: true, required: true })
-  title: string;
+  code: string;
 
   @Prop({ trim: true })
-  description: string;
+  name: string;
+
+  @Prop({ trim: true })
+  price: number;
 
   @Prop({ default: false })
   done: boolean;
 }
 
-export const TaskSchema = SchemaFactory.createForClass(Task);
+export const ServiceSchema = SchemaFactory.createForClass(Service);
