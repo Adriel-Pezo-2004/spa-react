@@ -7,26 +7,26 @@ import { Service } from '../schemas/service.schema';
 
 @Injectable()
 export class ServiceService {
-  constructor(@InjectModel(Service.name) private taskModel: Model<Service>) {}
+  constructor(@InjectModel(Service.name) private serviceModel: Model<Service>) {}
 
-  async create(createTaskDto: CreateServiceDto): Promise<Service> {
-    const createdTask = new this.taskModel(createTaskDto);
-    return createdTask.save();
+  async create(createServiceDto: CreateServiceDto): Promise<Service> {
+    const createdService = new this.serviceModel(createServiceDto);
+    return createdService.save();
   }
 
   async findAll(): Promise<Service[]> {
-    return this.taskModel.find().exec();
+    return this.serviceModel.find().exec();
   }
 
   async findOne(code: string): Promise<Service> {
-    return this.taskModel.findById(code).exec();
+    return this.serviceModel.findById(code).exec();
   }
 
   async delete(code: string): Promise<Service> {
-    return this.taskModel.findByIdAndDelete(code);
+    return this.serviceModel.findByIdAndDelete(code);
   }
 
-  async update(code: string, createTaskDto: UpdateServiceDto): Promise<Service> {
-    return this.taskModel.findByIdAndUpdate(code, createTaskDto, { new: true });
+  async update(code: string, updateTaskDto: UpdateServiceDto): Promise<Service> {
+    return this.serviceModel.findByIdAndUpdate(code, updateTaskDto, { new: true });
   }
 }

@@ -14,7 +14,7 @@ import { IssueService } from './issue.service';
 import { CreateIssueDto } from '../dto/create-issue.dto';
 import { UpdateIssueDto } from '../dto/update-issue.dto';
 
-@Controller('service')
+@Controller('issue')
 export class IssueController {
   constructor(private issueService: IssueService) {}
 
@@ -29,7 +29,7 @@ export class IssueController {
       return await this.issueService.create(body);
     } catch (error) {
       if (error.code === 11000) {
-        throw new ConflictException('Task already exists');
+        throw new ConflictException('Servicio ya existente');
       }
       throw error;
     }
@@ -38,7 +38,7 @@ export class IssueController {
   @Get(':code')
   async findOne(@Param('code') code: string) {
     const task = await this.issueService.findOne(code);
-    if (!task) throw new NotFoundException('Task does not exist!');
+    if (!task) throw new NotFoundException('Servicio no existe!');
     return task;
   }
 
@@ -46,14 +46,14 @@ export class IssueController {
   @HttpCode(204)
   async delete(@Param('code') code: string) {
     const task = await this.issueService.delete(code);
-    if (!task) throw new NotFoundException('Task does not exist!');
+    if (!task) throw new NotFoundException('Servicio no existe!');
     return task;
   }
 
   @Put(':code')
   async update(@Param('code') code: string, @Body() body: UpdateIssueDto) {
     const task = await this.issueService.update(code, body);
-    if (!task) throw new NotFoundException('Task does not exist!');
+    if (!task) throw new NotFoundException('Servicio no existe!');
     return task;
   }
 }

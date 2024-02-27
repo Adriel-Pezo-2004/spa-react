@@ -7,26 +7,26 @@ import { Issue } from '../schemas/issue.schema';
 
 @Injectable()
 export class IssueService {
-  constructor(@InjectModel(Issue.name) private taskModel: Model<Issue>) {}
+  constructor(@InjectModel(Issue.name) private issueModel: Model<Issue>) {}
 
-  async create(createTaskDto: CreateIssueDto): Promise<Issue> {
-    const createdTask = new this.taskModel(createTaskDto);
-    return createdTask.save();
+  async create(createIssueDto: CreateIssueDto): Promise<Issue> {
+    const createdIssue = new this.issueModel(createIssueDto);
+    return createdIssue.save();
   }
 
   async findAll(): Promise<Issue[]> {
-    return this.taskModel.find().exec();
+    return this.issueModel.find().exec();
   }
 
   async findOne(code: string): Promise<Issue> {
-    return this.taskModel.findById(code).exec();
+    return this.issueModel.findById(code).exec();
   }
 
   async delete(code: string): Promise<Issue> {
-    return this.taskModel.findByIdAndDelete(code);
+    return this.issueModel.findByIdAndDelete(code);
   }
 
-  async update(code: string, createTaskDto: UpdateIssueDto): Promise<Issue> {
-    return this.taskModel.findByIdAndUpdate(code, createTaskDto, { new: true });
+  async update(code: string, updateIssueDto: UpdateIssueDto): Promise<Issue> {
+    return this.issueModel.findByIdAndUpdate(code, updateIssueDto, { new: true });
   }
 }

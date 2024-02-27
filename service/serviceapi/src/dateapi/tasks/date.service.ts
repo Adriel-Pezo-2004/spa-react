@@ -7,26 +7,26 @@ import { Date } from '../schemas/date.schema';
 
 @Injectable()
 export class DateService {
-  constructor(@InjectModel(Date.name) private taskModel: Model<Date>) {}
+  constructor(@InjectModel(Date.name) private dateModel: Model<Date>) {}
 
-  async create(createTaskDto: CreateDateDto): Promise<Date> {
-    const createdTask = new this.taskModel(createTaskDto);
-    return createdTask.save();
+  async create(createDateDto: CreateDateDto): Promise<Date> {
+    const createdDate = new this.dateModel(createDateDto);
+    return createdDate.save();
   }
 
   async findAll(): Promise<Date[]> {
-    return this.taskModel.find().exec();
+    return this.dateModel.find().exec();
   }
 
   async findOne(id: string): Promise<Date> {
-    return this.taskModel.findById(id).exec();
+    return this.dateModel.findById(id).exec();
   }
 
   async delete(id: string): Promise<Date> {
-    return this.taskModel.findByIdAndDelete(id);
+    return this.dateModel.findByIdAndDelete(id);
   }
 
-  async update(id: string, createTaskDto: UpdateDateDto): Promise<Date> {
-    return this.taskModel.findByIdAndUpdate(id, createTaskDto, { new: true });
+  async update(id: string, updateDateDto: UpdateDateDto): Promise<Date> {
+    return this.dateModel.findByIdAndUpdate(id, updateDateDto, { new: true });
   }
 }
